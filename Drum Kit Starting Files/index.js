@@ -3,14 +3,16 @@ for(var i = 0; i< l; i++)
     {
         document.querySelectorAll(".drum")[i].addEventListener("click", function(){
             var button = this.innerHTML;
-            return sound(button);
+            sound(button);
+            buttonAnimation(button);
         });
     }
 
 for(var j = 0; j< l; j++)
     {    
         document.querySelectorAll(".drum")[j].addEventListener("keyup", (event)=>{
-            return sound(event.key);
+        sound(event.key);
+        buttonAnimation(event.key);
         });
     }
 
@@ -49,4 +51,13 @@ function sound(h)
         default:
             break;
     }
+}
+
+function buttonAnimation(bpress)
+{
+    var button1 = document.querySelector("." + bpress);
+    button1.classList.toggle("pressed");
+    setTimeout(function(){
+        button1.classList.toggle("pressed");
+    }, 100);
 }
